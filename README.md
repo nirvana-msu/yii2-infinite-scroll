@@ -46,10 +46,11 @@ So the minimal required configuration would look like this:
 ```php
 echo ListView::widget([
     ...
+    'id' => 'my-listview-id',
     'layout' => "{summary}\n<div class=\"items\">{items}</div>\n{pager}",
     'pager' => [
         'class' => InfiniteScrollPager::className(),
-        'widgetId' => '#my-listview-id',
+        'widgetId' => 'my-listview-id',
         'itemsCssClass' => 'items',
     ],
 ]);
@@ -59,10 +60,11 @@ An example illustrating how to customize some widget / plugin options:
 ```php
 echo ListView::widget([
     ...
+    'id' => 'my-listview-id',
     'layout' => "{summary}\n<div class=\"items\">{items}</div>\n{pager}",
     'pager' => [
         'class' => InfiniteScrollPager::className(),
-        'widgetId' => '#my-listview-id',
+        'widgetId' => 'my-listview-id',
         'itemsCssClass' => 'items',
         'contentLoadedCallback' => 'afterAjaxListViewUpdate',
         'nextPageLabel' => 'Load more items',

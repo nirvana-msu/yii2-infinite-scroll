@@ -249,7 +249,7 @@ class InfiniteScrollPager extends Widget
         $contentLoadedCallback = Json::encode($this->contentLoadedCallback);
 
         $this->view->registerJs("$('" . $this->pluginOptions['contentSelector'] . "').infinitescroll(" . $pluginOptions . ", " . $contentLoadedCallback . ");",
-            View::POS_END, 'infinite-scroll');
+            View::POS_END, $this->widgetId . '-infinite-scroll');
     }
 }
 

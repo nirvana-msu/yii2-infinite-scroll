@@ -53,7 +53,7 @@ class InfiniteScrollPager extends Widget
     /**
      * @var string|JsExpression javascript callback to be executed on loading the content via ajax call
      */
-    public $contentLoadedCallback;
+    public $contentLoadedCallback = 'function(){ console.log("Loaded"); }';
 
     /**
      * @var Pagination the pagination object that this pager is associated with.

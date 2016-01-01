@@ -123,14 +123,16 @@ class InfiniteScrollPager extends Widget
                     $behaviorAsset = 'cufon.js';
                     break;
                 default:
-                    throw new InvalidConfigException('Unknown "behavior" specified.');
+                    $behaviorAsset = false;
             }
-            $assetManager = $this->view->getAssetManager();
-            $assetBundle = $assetManager->getBundle(InfiniteScrollAsset::className());
-            $behaviorUrl = $assetManager->getAssetUrl($assetBundle, 'behaviors/' . $behaviorAsset);
-            $this->view->registerJsFile($behaviorUrl, [
-                'depends' => [InfiniteScrollAsset::className()]
-            ]);
+            if ($behaviorAsset) {
+                $assetManager = $this->view->getAssetManager();
+                $assetBundle = $assetManager->getBundle(InfiniteScrollAsset::className());
+                $behaviorUrl = $assetManager->getAssetUrl($assetBundle, 'behaviors/' . $behaviorAsset);
+                $this->view->registerJsFile($behaviorUrl, [
+                    'depends' => [InfiniteScrollAsset::className()]
+                ]);
+            }
         }
 
         $widgetSelector = '#' . $this->widgetId;
@@ -248,10 +250,12 @@ class InfiniteScrollPager extends Widget
         }
         $contentLoadedCallback = Json::encode($this->contentLoadedCallback);
 
+        if (empty($contentLoadedCallback)) {
+            $contentLoadedCallback = 'null';
+        }
         $this->view->registerJs("$('" . $this->pluginOptions['contentSelector'] . "').infinitescroll(" . $pluginOptions . ", " . $contentLoadedCallback . ");",
             View::POS_END, $this->widgetId . '-infinite-scroll');
     }
 }
 
 ?>
-

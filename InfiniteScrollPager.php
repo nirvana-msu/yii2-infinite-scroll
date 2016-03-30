@@ -252,6 +252,3 @@ class InfiniteScrollPager extends Widget
             View::POS_END, $this->widgetId . '-infinite-scroll');
     }
 }
-
-?>
-

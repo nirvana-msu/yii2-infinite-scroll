@@ -53,7 +53,7 @@ class InfiniteScrollPager extends Widget
     /**
      * @var string|JsExpression javascript callback to be executed on loading the content via ajax call
      */
-    public $contentLoadedCallback;
+    public $contentLoadedCallback = 'function(){}';
 
     /**
      * @var Pagination the pagination object that this pager is associated with.
@@ -101,6 +101,10 @@ class InfiniteScrollPager extends Widget
     {
         if ($this->pagination === null) {
             throw new InvalidConfigException('The "pagination" property must be set.');
+        }
+
+        if ($this->widgetId === null) {
+            throw new InvalidConfigException('The "widgetId" property must be set.');
         }
 
         // Publish assets and register main plugin code

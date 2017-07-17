@@ -9,6 +9,8 @@ gracefully degrading to complete page reload when javascript is disabled.
 Several behaviours allowing to customize scroll behavior are provided out of the box,
 including twitter-style manual trigger, local scroll in overflow div, masonry integration and others.
 
+At the moment this extention only supports v2.x of infinite-scroll plugin.
+
 ## Resources
  * Yii2 [extension page](http://www.yiiframework.com/extension/yii2-infinite-scroll)
  * Infinite-Scroll jQuery plugin [documentation](https://github.com/paulirish/infinite-scroll)
@@ -26,7 +28,7 @@ Add extension to your `composer.json` and update your dependencies as usual, e.g
 }
 ```
 
-##Widget Configuration
+## Widget Configuration
 
 In addition to most of the properties that `LinkPager` provides, this widget also allows you to configure:
  
@@ -35,7 +37,7 @@ In addition to most of the properties that `LinkPager` provides, this widget als
  * $pluginOptions *array* infinite-scroll jQuery plugin options. For more information refer to infinite-scroll [documentation](https://github.com/paulirish/infinite-scroll)
  * $contentLoadedCallback *string|JsExpression* javascript callback to be executed on loading the content via ajax call
   
-##Sample Usage
+## Sample Usage
 
 Plugin works by appending fetched items to the end of parent container, so it is required
 to configure `layout` property of parent `ListView` widget, wrapping `{items}` into e.g. `div` container with some class (to be used as a selector).
@@ -82,6 +84,6 @@ echo ListView::widget([
 ]);
 ```
 
-##License
+## License
 
 Extension is released under MIT license, same as underlying jQuery plugin.
